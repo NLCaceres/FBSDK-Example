@@ -20,10 +20,10 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         friendNames = []
         friendsTableView.reloadData()
-
-		if(FBSDKAccessToken.current().hasGranted("user_friends")){
-			
-			// perform graph request
+        
+        if(FBSDKAccessToken.current().hasGranted("user_friends")){
+            
+            // perform graph request
             let graphRequest = FBSDKGraphRequest(graphPath: "/me/taggable_friends?limit=1000", parameters: nil)
             
             graphRequest?.start(completionHandler: {
@@ -47,12 +47,12 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
                 
             })
-
-			
-		}else{
-			print("user_freinds access not granted")
-			
-		}
+            
+            
+        }else{
+            print("user_freinds access not granted")
+            
+        }
 		
 		
 	

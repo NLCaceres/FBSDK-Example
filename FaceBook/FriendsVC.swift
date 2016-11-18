@@ -30,9 +30,6 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 (connection, result, error) -> Void in
                 
                 if (error == nil) {
-                    print(result)
-                }
-                else {
                     // Way to cast in swift that ensures I know what I am getting
                     // Otherwise use optional form if any uncertainty of course
                     let resultDict = result as! [String:Any]
@@ -43,7 +40,28 @@ class FriendsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     for friend in friends {
                         let name = friend["name"] as! String
                         self.friendNames.append(name)
+                        
                     }
+                    self.friendsTableView.reloadData()
+                    print(result)
+                }
+                else {
+                    
+                    /*
+                    
+                    // Way to cast in swift that ensures I know what I am getting
+                    // Otherwise use optional form if any uncertainty of course
+                    let resultDict = result as! [String:Any]
+                    
+                    let friends = resultDict["data"] as! [[String:Any]]
+                    // Data string acts as a key for the dictionary always will in this request
+                    
+                    for friend in friends {
+                        let name = friend["name"] as! String
+                        self.friendNames.append(name)
+ 
+                    }
+                    */
                 }
                 
             })
